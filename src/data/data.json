@@ -1,0 +1,222 @@
+[
+    {
+        "id": 1,
+        "titulo": "Chocolate - Milk",
+        "descripcion": "Aenean auctor gravida sem.",
+        "categoria": "Medias",
+        "imagen": "http://dummyimage.com/200x100.png/cc0000/ffffff",
+        "precio": 2500,
+        "precioDeOferta": 2500,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 2,
+        "titulo": "Muffin - Mix - Strawberry Rhubarb",
+        "descripcion": "Nulla ut erat id mauris vulputate elementum.",
+        "categoria": "Medias",
+        "imagen": "http://dummyimage.com/200x100.png/cc0000/ffffff",
+        "precio": 1700,
+        "precioDeOferta": 1700,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 3,
+        "titulo": "Appetizer - Tarragon Chicken",
+        "descripcion": "Aenean auctor gravida sem.",
+        "categoria": "Pantalones",
+        "imagen": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+        "precio": 900,
+        "precioDeOferta": 900,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 4,
+        "titulo": "Jam - Strawberry, 20 Ml Jar",
+        "descripcion": "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",
+        "categoria": "Remeras",
+        "imagen": "http://dummyimage.com/200x100.png/dddddd/000000",
+        "precio": 1600,
+        "precioDeOferta": 1600,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 5,
+        "titulo": "Glass - Juice Clear 5oz 55005",
+        "descripcion": "Sed accumsan felis.",
+        "categoria": "Buzos",
+        "imagen": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+        "precio": 1800,
+        "precioDeOferta": 1600,
+        "oferta": true,
+        "stock": 10
+    },
+    {
+        "id": 6,
+        "titulo": "Cheese - Brie, Cups 125g",
+        "descripcion": "In hac habitasse platea dictumst.",
+        "categoria": "Remeras",
+        "imagen": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+        "precio": 2100,
+        "precioDeOferta": 2100,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 7,
+        "titulo": "Oneshot Automatic Soap System",
+        "descripcion": "Morbi vel lectus in quam fringilla rhoncus.",
+        "categoria": "Buzos",
+        "imagen": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+        "precio": 1200,
+        "precioDeOferta": 1100,
+        "oferta": true,
+        "stock": 10
+    },
+    {
+        "id": 8,
+        "titulo": "Myers Planters Punch",
+        "descripcion": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",
+        "categoria": "Pantalones",
+        "imagen": "http://dummyimage.com/200x100.png/dddddd/000000",
+        "precio": 1000,
+        "precioDeOferta": 1000,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 9,
+        "titulo": "Nut - Almond, Blanched, Ground",
+        "descripcion": "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.",
+        "categoria": "Pantalones",
+        "imagen": "http://dummyimage.com/200x100.png/ff4444/ffffff",
+        "precio": 1150,
+        "precioDeOferta": 1150,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 10,
+        "titulo": "Pasta - Fett Alfredo, Single Serve",
+        "descripcion": "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+        "categoria": "Remeras",
+        "imagen": "http://dummyimage.com/200x100.png/dddddd/000000",
+        "precio": 2150,
+        "precioDeOferta": 2150,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 11,
+        "titulo": "Bread - Assorted Rolls",
+        "descripcion": "Mauris sit amet eros.",
+        "categoria": "Remeras",
+        "imagen": "http://dummyimage.com/200x100.png/ff4444/ffffff",
+        "precio": 4300,
+        "precioDeOferta": 4000,
+        "oferta": true,
+        "stock": 10
+    },
+    {
+        "id": 12,
+        "titulo": "Table Cloth 62x120 White",
+        "descripcion": "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",
+        "categoria": "Medias",
+        "imagen": "http://dummyimage.com/200x100.png/dddddd/000000",
+        "precio": 2500,
+        "precioDeOferta": 2500,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 13,
+        "titulo": "Tuna - Sushi Grade",
+        "descripcion": "Aenean sit amet justo.",
+        "categoria": "Medias",
+        "imagen": "http://dummyimage.com/200x100.png/cc0000/ffffff",
+        "precio": 500,
+        "precioDeOferta": 500,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 14,
+        "titulo": "Wine - Barbera Alba Doc 2001",
+        "descripcion": "In blandit ultrices enim.",
+        "categoria": "Buzos",
+        "imagen": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+        "precio": 7500,
+        "precioDeOferta": 7500,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 15,
+        "titulo": "Artichoke - Hearts, Canned",
+        "descripcion": "Nullam varius.",
+        "categoria": "Remeras",
+        "imagen": "http://dummyimage.com/200x100.png/ff4444/ffffff",
+        "precio": 700,
+        "precioDeOferta": 700,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 16,
+        "titulo": "Ham - Smoked, Bone - In",
+        "descripcion": "Cras non velit nec nisi vulputate nonummy.",
+        "categoria": "Medias",
+        "imagen": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+        "precio": 350,
+        "precioDeOferta": 350,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 17,
+        "titulo": "Truffle Cups - Red",
+        "descripcion": "Nulla tempus.",
+        "categoria": "Remeras",
+        "imagen": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+        "precio": 2500,
+        "precioDeOferta": 2100,
+        "oferta": true,
+        "stock": 10
+    },
+    {
+        "id": 18,
+        "titulo": "Ham - Smoked, Bone - In",
+        "descripcion": "Etiam justo.",
+        "categoria": "Pantalones",
+        "imagen": "http://dummyimage.com/200x100.png/dddddd/000000",
+        "precio": 1500,
+        "precioDeOferta": 1500,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 19,
+        "titulo": "Sugar - Brown",
+        "descripcion": "Morbi non lectus.",
+        "categoria": "Buzos",
+        "imagen": "http://dummyimage.com/200x100.png/cc0000/ffffff",
+        "precio": 1600,
+        "precioDeOferta": 1600,
+        "oferta": false,
+        "stock": 10
+    },
+    {
+        "id": 20,
+        "titulo": "Bread - Hot Dog Buns",
+        "descripcion": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.",
+        "categoria": "Buzos",
+        "imagen": "http://dummyimage.com/200x100.png/dddddd/000000",
+        "precio": 900,
+        "precioDeOferta": 450,
+        "oferta": true,
+        "stock": 10
+    }
+]
