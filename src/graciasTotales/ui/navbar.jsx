@@ -1,7 +1,8 @@
 import { Favorite, HeadsetSharp, HeartBroken, HeatPumpRounded, History, LocalOffer, LogoutOutlined, MenuOutlined, Schedule, ShoppingBasket, ShoppingCart, Store } from '@mui/icons-material'
 import { AppBar, Box, Grid, IconButton, Toolbar, Typography } from '@mui/material'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../../navbar.css'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { LogoutFireBase } from '../../store/'
@@ -15,6 +16,7 @@ export const Navbar = () => {
         dispatch(LogoutFireBase());
     }
     const [Efecto, setEfecto] = useState(false)
+    const [MenuDesplegado, setMenuDesplegado] = useState(false)
 
     useEffect(() => {
         if (Efecto === false) {
@@ -25,93 +27,84 @@ export const Navbar = () => {
         }
     }, [productos])
 
+
+
     return (
-        <AppBar
-            position="fixed"
-            sx={{
-                width: '100%',
-                height: '90px'
-            }}
-        >
-            <Toolbar>
-                <IconButton
-                    color='inherit'
-                    edge='start'
-                    sx={{ mr: 2, display: { sm: 'none' } }}
-                >
-                    <MenuOutlined />
-                </IconButton>
-                <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-                    <Grid item xs={2}>
-
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component='div'
-                        >{displayName} </Typography>
-                    </Grid>
-                    <Grid item sx={{ display: { xs: 'none', sm: 'flex' } }} xs={10} justifyContent={'end'}>
-                        <Link to='/'>
-
-                            <IconButton sx={{ color: 'icons.store', mr: 4, }} >
-                                <Box display='flex' flexDirection='column' alignItems='center'>
-                                    <Store sx={{ fontSize: { sm: 40 } }} />
-                                    <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>Tienda</Typography>
-                                </Box>
-                            </IconButton>
-                        </Link>
-                        <Link to='/ofertas'>
-                            <IconButton sx={{ color: 'icons.offers', mr: 4 }}  >
-                                <Box display='flex' flexDirection='column' alignItems='center'>
-                                    <LocalOffer sx={{ fontSize: { sm: 40 } }} />
-                                    <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>Ultimas ofertas</Typography>
-                                </Box>
-                            </IconButton>
-                        </Link>
-
-                        <Link to='/carrito'>
-                            <IconButton sx={{ color: 'icons.cart', mr: 4 }} >
-                                <div className={`shoppingCart ${Efecto ? 'pulse' : ''}`}>
-
-
-                                    <ShoppingCart sx={{ fontSize: { sm: 40 } }} />
-                                    <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>{productos.length > 0 ? `carrito (${productos.length})` : `carrito`}</Typography>
-
+        <>
+            <div className={`appBar ${MenuDesplegado ? 'Flexed' : ''}`}>
+                <div className="menu-button">
+                    <div className="menu-containerIcon">
+                        <IconButton onClick={() => setMenuDesplegado(!MenuDesplegado)}>
+                            <MenuOutlined />
+                        </IconButton>
+                    </div>
+                    <h3>{displayName}</h3>
+                </div>
+                <div className={`icons_container ${MenuDesplegado ? 'visible' : ''}`}>
+                    <Link to='/' onClick={() => setMenuDesplegado(!MenuDesplegado)}>
+                        <IconButton sx={{ width: { sm: '70px', md: '120px' } }}>
+                            <div className={`textAndIcons ${MenuDesplegado ? 'iconsRight' : ''}`}>
+                                <div className="icon">
+                                    <Store sx={{ fontSize: { sm: 20 } }} />
                                 </div>
-                            </IconButton>
-
-                        </Link>
-                        <Link to='/historial'>
-                            <IconButton sx={{ color: 'icons.history', mr: 4 }} >
-                                <Box display='flex' flexDirection='column' alignItems='center'>
-                                    <Schedule sx={{ fontSize: { sm: 40 } }} />
-                                    <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>Mis compras</Typography>
-                                </Box>
-                            </IconButton>
-                        </Link>
-                        <Link to='/about'>
-                            <IconButton sx={{ color: 'icons.about', mr: 4 }} >
-                                <Box display='flex' flexDirection='column' alignItems='center'>
-                                    <Favorite sx={{ fontSize: { sm: 40 } }} />
-                                    <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>Sobre nosotros</Typography>
-                                </Box>
-                            </IconButton>
-
-                        </Link>
-                        <div onClick={cerrarSesion}>
-                            <Link to='/auth/login'>
-                                <IconButton sx={{ color: 'icons.logout', mr: 4 }} >
-                                    <Box display='flex' flexDirection='column' alignItems='center'>
-                                        <LogoutOutlined sx={{ fontSize: { sm: 40 } }} />
-                                        <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }} >Cerrar sesión</Typography>
-                                    </Box>
-                                </IconButton>
-                            </Link>
+                                <div className="texto">
+                                    <Typography sx={{ display: { xs: MenuDesplegado ? 'flex' : 'none', sm: 'none', md: 'flex' }, fontSize: '12px' }}>Tienda</Typography>
+                                </div>
+                            </div>
+                        </IconButton>
+                    </Link>
+                    <Link to='/ofertas' onClick={() => setMenuDesplegado(!MenuDesplegado)}>
+                        <IconButton sx={{ width: { sm: '70px', md: '120px' } }}>
+                            <div className={`textAndIcons ${MenuDesplegado ? 'iconsRight' : ''}`}>
+                                <LocalOffer sx={{ fontSize: { sm: 20 } }} />
+                                <div className="texto">
+                                    <Typography sx={{ display: { xs: MenuDesplegado ? 'flex' : 'none', sm: 'none', md: 'flex', fontSize: '12px' } }}>Ultimas oferta</Typography>
+                                </div>
+                            </div>
+                        </IconButton>
+                    </Link>
+                    <Link to='/carrito' onClick={() => setMenuDesplegado(!MenuDesplegado)}>
+                        <IconButton sx={{ width: { sm: '70px', md: '120px' } }}>
+                            <div className={`textAndIcons ${MenuDesplegado ? 'iconsRight' : ''}`}>
+                                <ShoppingCart sx={{ fontSize: { sm: 20 } }} />
+                                <div className="texto">
+                                    <Typography sx={{ display: { xs: MenuDesplegado ? 'flex' : 'none', sm: 'none', md: 'flex', fontSize: '12px' } }}>
+                                        {productos.length > 0 ? `carrito (${productos.length})` : `carrito`}
+                                    </Typography>
+                                </div>
+                            </div>
+                        </IconButton>
+                    </Link>
+                    <Link to='/historial' onClick={() => setMenuDesplegado(!MenuDesplegado)}>
+                        <IconButton sx={{ width: { sm: '70px', md: '120px' } }}>
+                            <div className={`textAndIcons ${MenuDesplegado ? 'iconsRight' : ''}`}>
+                                <Schedule sx={{ fontSize: { sm: 20 } }} />
+                                <div className="texto">
+                                    <Typography sx={{ display: { xs: MenuDesplegado ? 'flex' : 'none', sm: 'none', md: 'flex', fontSize: '12px' } }}>Mis compra</Typography>
+                                </div>
+                            </div>
+                        </IconButton>
+                    </Link>
+                    <Link to='/about' onClick={() => setMenuDesplegado(!MenuDesplegado)}>
+                        <IconButton sx={{ width: { sm: '70px', md: '120px' } }}>
+                            <div className={`textAndIcons ${MenuDesplegado ? 'iconsRight' : ''}`}>
+                                <Favorite sx={{ fontSize: { sm: 20 } }} />
+                                <div className="texto">
+                                    <Typography sx={{ display: { xs: MenuDesplegado ? 'flex' : 'none', sm: 'none', md: 'flex', fontSize: '12px' } }}>Sobre nosotros</Typography>
+                                </div>
+                            </div>
+                        </IconButton>
+                    </Link>
+                    <IconButton sx={{ width: { sm: '70px', md: '120px' } }} onClick={cerrarSesion}>
+                        <div className={`textAndIcons ${MenuDesplegado ? 'iconsRight' : ''}`}>
+                            <LogoutOutlined sx={{ fontSize: { sm: 20 } }} />
+                            <div className="texto">
+                                <Typography sx={{ display: { xs: MenuDesplegado ? 'flex' : 'none', sm: 'none', md: 'flex', fontSize: '12px' } }}>Cerrar sesión</Typography>
+                            </div>
                         </div>
-
-                    </Grid>
-                </Grid>
-            </Toolbar>
-        </AppBar >
-    )
+                    </IconButton>
+                </div>
+            </div>
+        </>
+    );
 }

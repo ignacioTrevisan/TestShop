@@ -11,7 +11,7 @@ export const SideBar = ({ drawerWidth }) => {
     // const { isSelected } = useSelector(state => state.shoppingSlice)
     // console.log(isSelected);
     return (
-        <Grid >
+        <Grid zIndex={1} top={'0px'}>
 
             <Box
                 component="nav"
@@ -24,7 +24,7 @@ export const SideBar = ({ drawerWidth }) => {
                     sx={{
                         width: '100%',
                         flexShrink: 0,
-                        [`& .MuiDrawer-paper`]: { marginTop: { lg: '12px', md: '12px', sm: '28px', xs: '35px' }, width: { lg: `${drawerWidth.lg}px`, md: `${drawerWidth.md}px`, sm: `${drawerWidth.sm}px`, xs: `${drawerWidth.xs}px` }, boxSizing: 'border-box', top: { sm: 65, xs: 57, md: 80 }, backgroundColor: '#E1E3E3' },
+                        [`& .MuiDrawer-paper`]: { marginTop: { lg: '12px', md: '-20px', sm: '-10px', xs: '0px' }, width: { lg: `${drawerWidth.lg}px`, md: `${drawerWidth.md}px`, sm: `${drawerWidth.sm}px`, xs: `${drawerWidth.xs}px` }, boxSizing: 'border-box', top: { sm: 65, xs: 57, md: 80 }, backgroundColor: '#E1E3E3' },
                     }}
                 >
                     <List>
@@ -36,6 +36,6 @@ export const SideBar = ({ drawerWidth }) => {
             </Box>
 
 
-        </Grid>
+        </Grid >
     )
 }

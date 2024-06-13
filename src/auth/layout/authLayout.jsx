@@ -9,8 +9,9 @@ export const AuthLayout = ({ children, tittle = 'Login' }) => {
                 spacing={0}
                 direction={'column'}
                 alignItems={'center'}
+                xs={12}
                 justifyContent={'center'}
-                sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4 }}
+                sx={{ minHeight: '100vh', width: '100%', backgroundColor: 'primary.main', padding: 4 }}
             >
 
                 <Grid

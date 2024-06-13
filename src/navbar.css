@@ -1,0 +1,159 @@
+.appBar {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 350px;
+    background: #E38D26;
+    padding-left: 5%;
+    top: -290px;
+    transition: top 0.3s ease;
+    align-items: end;
+    justify-content: space-around;
+    z-index: 999;
+}
+
+.Flexed {
+    background: #E38D26;
+    display: flex;
+    flex-direction: column;
+    top: 0px;
+    align-items: start;
+    justify-content: start;
+}
+
+.texto {
+    height: 100%;
+}
+
+.menu-button {
+    color: inherit;
+    width: 40%;
+    justify-content: start;
+    display: flex;
+
+    align-items: center;
+}
+
+.menu-containerIcon {
+    display: none;
+}
+
+.icons_container {
+    width: 55%;
+    justify-content: end;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.view {
+    display: flex;
+}
+
+.iconsButton {
+    width: 120px;
+}
+
+.textAndIcons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconsRight {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.pulse {
+    animation-name: pulse;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+
+@media (min-width:600px) {
+    .appBar {
+        position: fixed;
+        display: flex;
+        width: 100%;
+        z-index: 999;
+        flex-direction: row;
+        height: 350px;
+        background: #E38D26;
+        padding-left: 5%;
+        top: -290px;
+        transition: top 0.3s ease;
+        align-items: end;
+        justify-content: space-around;
+        z-index: 2;
+    }
+
+    .icons_container {
+        width: 55%;
+        justify-content: end;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .textAndIcons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-containerIcon {
+        display: flex;
+    }
+
+    .menu-button {
+        width: 90%;
+    }
+
+    .icons_container {
+        display: none;
+    }
+
+    .icons_container.visible {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media (min-width: 900px) {
+    .icons_container {
+
+        margin-bottom: 0px;
+
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+        color: #69BCFE;
+    }
+
+    80% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+        color: #2196F3;
+    }
+}

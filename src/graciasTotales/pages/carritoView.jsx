@@ -88,13 +88,18 @@ export const CarritoView = () => {
                 )}
 
 
-            </div>
-            <div className="container-ticket">
-                <div className="title">
-                    <h3>Productos({cantidadTotal}):  ${valorTotal}</h3>
-                    <Button variant='contained' fullWidth sx={{ top: 'unset', bottom: { sm: '0px', md: '10px' } }} onClick={efectuarCompra}>Comprar ahora</Button>
-                </div>
-            </div>
+            </div>{
+                productos.length > 0 ?
+
+
+                    <div className="container-ticket">
+                        <div className="title">
+                            <h3>Productos({cantidadTotal}):  ${valorTotal}</h3>
+                            <Button variant='contained' fullWidth sx={{ top: 'unset', bottom: { sm: '0px', md: '10px' } }} onClick={efectuarCompra}>Comprar ahora</Button>
+                        </div>
+                    </div>
+                    : <></>
+            }
         </div>
 
     )
