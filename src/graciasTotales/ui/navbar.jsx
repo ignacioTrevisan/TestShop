@@ -1,25 +1,36 @@
-import { Favorite, HeadsetSharp, HeartBroken, HeatPumpRounded, LocalOffer, LogoutOutlined, MenuOutlined, ShoppingCart, Store } from '@mui/icons-material'
+import { Favorite, HeadsetSharp, HeartBroken, HeatPumpRounded, History, LocalOffer, LogoutOutlined, MenuOutlined, Schedule, ShoppingBasket, ShoppingCart, Store } from '@mui/icons-material'
 import { AppBar, Box, Grid, IconButton, Toolbar, Typography } from '@mui/material'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { carritoContext } from '../context/carritoContext'
-import { userContext } from '../context/userContext'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { LogoutFireBase } from '../../store/'
+
 
 export const Navbar = () => {
-    const { carrito } = useContext(carritoContext);
-    const { setUser, user } = useContext(userContext);
+    const { displayName } = useSelector(state => state.authSlice);
+    const { productos } = useSelector(state => state.carritoSlice);
+    const dispatch = useDispatch();
     const cerrarSesion = () => {
-
-        setUser({
-            user: '',
-            logged: false,
-        })
+        dispatch(LogoutFireBase());
     }
+    const [Efecto, setEfecto] = useState(false)
+
+    useEffect(() => {
+        if (Efecto === false) {
+            setEfecto(true)
+            setTimeout(() => {
+                setEfecto(false)
+            }, 500);
+        }
+    }, [productos])
+
     return (
         <AppBar
             position="fixed"
             sx={{
-                width: '100%'
+                width: '100%',
+                height: '90px'
             }}
         >
             <Toolbar>
@@ -31,12 +42,15 @@ export const Navbar = () => {
                     <MenuOutlined />
                 </IconButton>
                 <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component='div'
-                    >Test shop</Typography>
-                    <Grid item sx={{ display: { xs: 'none', sm: 'flex' } }} >
+                    <Grid item xs={2}>
+
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component='div'
+                        >{displayName} </Typography>
+                    </Grid>
+                    <Grid item sx={{ display: { xs: 'none', sm: 'flex' } }} xs={10} justifyContent={'end'}>
                         <Link to='/'>
 
                             <IconButton sx={{ color: 'icons.store', mr: 4, }} >
@@ -47,21 +61,33 @@ export const Navbar = () => {
                             </IconButton>
                         </Link>
                         <Link to='/ofertas'>
-                            <IconButton sx={{ color: 'icons.offers', mr: 4 }} >
+                            <IconButton sx={{ color: 'icons.offers', mr: 4 }}  >
                                 <Box display='flex' flexDirection='column' alignItems='center'>
                                     <LocalOffer sx={{ fontSize: { sm: 40 } }} />
                                     <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>Ultimas ofertas</Typography>
                                 </Box>
                             </IconButton>
                         </Link>
+
                         <Link to='/carrito'>
                             <IconButton sx={{ color: 'icons.cart', mr: 4 }} >
-                                <Box display='flex' flexDirection='column' alignItems='center'>
+                                <div className={`shoppingCart ${Efecto ? 'pulse' : ''}`}>
+
+
                                     <ShoppingCart sx={{ fontSize: { sm: 40 } }} />
-                                    <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>{carrito.length > 0 ? `carrito (${carrito.length})` : `carrito`}</Typography>
-                                </Box>
+                                    <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>{productos.length > 0 ? `carrito (${productos.length})` : `carrito`}</Typography>
+
+                                </div>
                             </IconButton>
 
+                        </Link>
+                        <Link to='/historial'>
+                            <IconButton sx={{ color: 'icons.history', mr: 4 }} >
+                                <Box display='flex' flexDirection='column' alignItems='center'>
+                                    <Schedule sx={{ fontSize: { sm: 40 } }} />
+                                    <Typography sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>Mis compras</Typography>
+                                </Box>
+                            </IconButton>
                         </Link>
                         <Link to='/about'>
                             <IconButton sx={{ color: 'icons.about', mr: 4 }} >

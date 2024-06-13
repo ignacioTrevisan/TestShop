@@ -1,0 +1,183 @@
+body {
+    background-color: red;
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: flex-end; */
+    /* Alinear al final */
+}
+
+.container {
+    top: 150px;
+    position: relative;
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+}
+
+.container-product {
+    width: 600px;
+    position: relative;
+
+}
+
+.product-desc {
+    padding-left: 10px;
+    width: 260px;
+}
+
+
+
+.container-ticket {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    margin-left: 20px;
+    background: rgb(221, 218, 218);
+    border-radius: 10px;
+    position: sticky;
+    top: 120px;
+    height: 120px;
+    margin-top: 10px;
+}
+
+.product {
+    margin: 10px 0;
+    background: rgb(221, 218, 218);
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.product.eliminando {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.product-image {
+    width: 200px;
+    height: 98px;
+}
+
+
+.product-image img {
+    width: 200px;
+    height: 100px;
+}
+
+.icons {
+    right: 0;
+}
+
+@media (max-width: 1500px) {
+    .container {
+        width: 1200px;
+    }
+
+    .container-ticket {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        width: 1000px;
+
+    }
+
+    .container-ticket {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .container {
+        width: 1000px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .container {
+        width: 900px;
+    }
+
+    .container-ticket {
+        width: 200px;
+    }
+
+    .container-ticket h3 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .container {
+        width: 800px;
+    }
+
+    .product-desc {
+        width: 350px;
+    }
+
+    .product:last-child {
+        margin-bottom: 120px;
+    }
+
+    .container-product {
+        width: 90%;
+    }
+
+    .container-ticket {
+        position: fixed;
+        top: unset;
+        height: 110px;
+        background: rgba(255, 255, 255, .4);
+        backdrop-filter: blur(5px);
+        margin-top: 0px;
+        bottom: 10px;
+        width: 600px;
+    }
+}
+
+
+
+@media (max-width: 800px) {
+
+    .container {
+        width: 700px;
+    }
+
+    .product-desc {
+        width: 270px;
+    }
+
+    .container-ticket {
+
+        width: 500px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 600px;
+    }
+
+    .product-desc {
+        width: 200px;
+    }
+
+    .container-ticket {
+
+        width: 400px;
+    }
+}

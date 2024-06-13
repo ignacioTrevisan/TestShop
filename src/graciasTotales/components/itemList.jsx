@@ -4,7 +4,16 @@ import { Item } from './item'
 import MiniMenuDesplegable from './menu'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-export const ItemList = ({ productos, setFiltro, filtro, ordenar }) => {
+import { useSelector } from 'react-redux'
+export const ItemList = ({ productos, cambiarFiltro, filtro, ordenar }) => {
+
+    const { products } = useSelector(state => state.productosSlice);
+    const [botonesDisplay, setBotonesDisplay] = useState('none')
+    useEffect(() => {
+        if (products.length > 0) {
+            setBotonesDisplay('');
+        }
+    }, [products])
 
     const [display, setDisplay] = useState('flex');
     const parametro = useParams();
@@ -22,7 +31,7 @@ export const ItemList = ({ productos, setFiltro, filtro, ordenar }) => {
     }
     const setFiltroEsto = (tipo) => {
         setDisplay('none')
-        setFiltro(tipo);
+        cambiarFiltro(tipo);
     }
 
 
@@ -39,7 +48,7 @@ export const ItemList = ({ productos, setFiltro, filtro, ordenar }) => {
         }}>
 
             <Grid container justifyContent={'center'} >
-                <Grid container className='animate_animated animate__bounceInLeft' sx={{ ml: 10, mb: 2, mt: 1 }}>
+                <Grid container className='animate_animated animate__bounceInLeft' sx={{ ml: 10, mb: 2, mt: 1 }} display={botonesDisplay}>
                     <MiniMenuDesplegable sx={{ mt: 10 }} setFiltroEsto={setFiltroEsto} filtro={filtro} />
                     <Button onClick={ordenarEsto} sx={{ height: '40px' }}> ordenar por precio</Button>
                 </Grid>
