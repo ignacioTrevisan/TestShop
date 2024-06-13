@@ -10,7 +10,7 @@ export const LoadPages = () => {
                 direction={'column'}
                 alignItems={'center'}
                 justifyContent={'center'}
-                sx={{ minHeight: '100vh', width: '1400px', backgroundColor: '#E38D26', padding: 4 }}
+                sx={{ minHeight: '100vh', width: '100%', backgroundColor: '#E38D26', padding: 4 }}
             >
                 <Grid item>
                     <CircularProgress color='warning' />
