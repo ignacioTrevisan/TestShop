@@ -1,13 +1,14 @@
 import { Button, ButtonBase, Grid, TextField, Typography } from '@mui/material'
 import React, { useContext, useState } from 'react'
-import { carritoContext } from '../context/carritoContext';
+
+import { useDispatch } from 'react-redux';
+import { AddProduct } from '../../store/carrito/carritoSlice';
+
 
 
 
 export const ItemViewContainer = ({ producto }) => {
     const [cantidad, setCantidad] = useState(1);
-
-    const { carrito, dispatch } = useContext(carritoContext)
 
     const masCantidad = () => {
         setCantidad(cantidad + 1);
@@ -15,20 +16,15 @@ export const ItemViewContainer = ({ producto }) => {
     const menosCantidad = () => {
         setCantidad(cantidad - 1);
     }
+    const dispatch = useDispatch();
     const generarCompra = () => {
         const productoComprado = { ...producto, cantidad };
-        const action = {
-            carrito: carrito,
-            type: '[CARRITO]AddProduct',
-            payload: productoComprado,
-        }
-
-        dispatch(action);
+        dispatch(AddProduct(productoComprado));
     }
 
     return (
         <>
-            <Grid container className='box-shadow' height={'100vh'} sx={{ backgroundColor: '#E1E3E3' }} justifyContent={'center'}>
+            <Grid container className='animate__animated animated_fadeInbox-shadow animate__animated animate__fadeIn' height={'100vh'} sx={{ backgroundColor: '#E1E3E3' }} justifyContent={'center'}>
                 <Grid item xs={8} height={'400px'} mt={15} sx={{ backgroundColor: 'white' }}>
                     <Grid item xs={12} height={'50px'} width={'100%'} justifyContent={'center'} >
                         <Typography variant='h5'>{producto.titulo}</Typography>
@@ -64,7 +60,7 @@ export const ItemViewContainer = ({ producto }) => {
                                 </Grid>
                                 <Grid item xs={12} mt={2}>
                                     {producto.oferta ?
-                                        <Grid container xs={12} width={'200px'}>
+                                        <Grid container width={'200px'}>
                                             <Typography><b>Precio:</b></Typography><Typography ml={1} > $ {producto.precioDeOferta}</Typography><Typography sx={{ textDecoration: 'line-through', color: 'red' }} ml={1}>${producto.precio}</Typography>
                                         </Grid>
 

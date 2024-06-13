@@ -1,17 +1,21 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthLayout } from '../layout/authLayout'
-import { Button, Grid, IconButton, Link, TextField, Typography } from '@mui/material'
+import { Button, Grid, Link, TextField, Typography } from '@mui/material'
 import { Google } from '@mui/icons-material'
-import { Navigate, Link as linkRouter, useNavigate } from 'react-router-dom'
-import { UserProvider } from '../../graciasTotales/context/userProvider'
+import { Link as linkRouter, useNavigate } from 'react-router-dom'
 import { userContext } from '../../graciasTotales/context/userContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { LoginWithEmailAndPassword, signWithGoogle } from '../../store/'
+import { UseForm } from '../../hooks/useForm'
 
 export const LoginPage = () => {
-    const [usuario, setUsuario] = useState('');
 
-    const [contrasena, setContrasena] = useState('');
-    const { user, setUser } = useContext(userContext);
+    const { errorMessage } = useSelector(state => state.authSlice);
 
+
+    const { OnInputchange, email, password } = UseForm({ email: '', password: '' });
+
+    const dispatch = useDispatch();
 
     const [alerta, setAlerta] = useState(
         {
@@ -20,11 +24,11 @@ export const LoginPage = () => {
             alerta: 'Usuario incorrecto, por favor verifique sus credenciales'
         }
     );
-    const avisarDatosIncorrectos = () => {
+    const avisarDatosIncorrectos = (mensaje) => {
         setAlerta({
             display: 'flex',
             div: 'danger',
-            alerta: 'Usuario incorrecto, por favor verifique sus credenciales'
+            alerta: errorMessage
         })
     }
     const avisarCargarDatos = () => {
@@ -34,29 +38,30 @@ export const LoginPage = () => {
             alerta: 'Por favor cargue sus datos'
         })
     }
+    useEffect(() => {
+        if (errorMessage !== '' && errorMessage !== null) {
+            console.log(errorMessage)
+            avisarDatosIncorrectos(errorMessage);
+        } else {
+            setAlerta({
+                display: 'none'
+            })
+        }
+    }, [errorMessage])
 
-    const navigate = useNavigate();
-    const logear = () => {
-        if (usuario === '' && contrasena === '') {
-            avisarCargarDatos();
-        } else if (usuario !== '' || contrasena !== '1234') {
-            avisarDatosIncorrectos();
-        }
-        if (usuario !== '' && contrasena === '1234') {
-            setUser({ user: usuario, logged: true })
-            navigate('/')
-        }
+    const OnsignWithGoogle = () => {
+        dispatch(signWithGoogle());
+    }
+    const submit = (event) => {
+        event.preventDefault();
+        dispatch(LoginWithEmailAndPassword(email, password))
     }
 
     return (
         <AuthLayout tittle={'Iniciar sesion'}>
-            <form>
+            <form onSubmit={submit} className='animate__animated animate__fadeIn animate__faster'>
                 <Grid container>
-                    <Grid item display={alerta.display} justifyContent={'center'} xs={12} >
-                        <div className={`alert alert-${alerta.div} container fluid`} role="alert" display='none'>
-                            {alerta.alerta}
-                        </div>
-                    </Grid>
+
 
 
                     <Grid item xs={12}>
@@ -64,25 +69,34 @@ export const LoginPage = () => {
                             fullWidth
                             label='Usuario'
                             placeholder='Ingrese usuario'
-                            onChange={(e) => setUsuario(e.target.value)}
+                            name='email'
+                            value={email}
+                            onChange={OnInputchange}
                         />
                         <TextField
                             fullWidth
                             label='Contraseña'
                             placeholder='Ingrese contraseña'
                             type='password'
+                            name='password'
+                            value={password}
+                            onChange={OnInputchange}
                             sx={{ mt: 1 }}
-                            onChange={(e) => setContrasena(e.target.value)}
                         />
+                        <Grid item display={alerta.display} justifyContent={'center'} xs={12} mt={2} >
+                            <div className={`alert alert-${alerta.div} container fluid`} role="alert" display='none'>
+                                {alerta.alerta}
+                            </div>
+                        </Grid>
                     </Grid>
-                    <Grid container spacing={2} sx={{ mt: 1 }}>
+                    <Grid container spacing={2} sx={{ mt: 0 }}>
                         <Grid item xs={12} md={6} >
-                            <Button variant='contained' onClick={logear} fullWidth>
+                            <Button variant='contained' type='submit' fullWidth>
                                 Iniciar
                             </Button>
                         </Grid>
                         <Grid item xs={12} md={6} >
-                            <Button variant='contained' fullWidth >
+                            <Button variant='contained' fullWidth onClick={OnsignWithGoogle}>
                                 <Google />
                                 <Typography sx={{ ml: 1 }}>Google</Typography>
                             </Button>
