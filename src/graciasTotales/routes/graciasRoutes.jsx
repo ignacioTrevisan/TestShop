@@ -1,6 +1,5 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Carrito } from '../pages/carrito'
 import { PaginaPrincipal } from '../pages/paginaPrincipal'
 import { Navbar } from '../ui/navbar'
 import { ItemView } from '../pages/itemView'
